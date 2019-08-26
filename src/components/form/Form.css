@@ -1,0 +1,10 @@
+.green {
+    height: 300px;
+    width: 300px;
+    background: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 2%;
+}

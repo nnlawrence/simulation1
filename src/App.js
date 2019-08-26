@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import axios from 'axios'
+import Dashboard from './components/dashboard/Dashboard'
+import Form from './components/form/Form'
+import Header from './components/header/Header'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      inventory: []
+    }
+  }
+
+  componentDidMount = () => {
+    this.getIt()
+  }
+
+  getIt = () => {
+    axios.get('/api/inventory').then(response => {
+      this.setState({
+        inventory: response.data
+      })
+    })
+  }
+
+  render() { 
+    return (
+      <div>
+
+        <Header />
+        <Dashboard id = {this.state.inventory.id} inventory = {this.state.inventory} getUpdatedInv = {this.getIt} />
+        <Form getUpdatedInv = {this.getIt} /> 
+        
+      </div>
+    );
+  }
 }
-
+ 
 export default App;
