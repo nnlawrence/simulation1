@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css'
 
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +10,8 @@ class Header extends Component {
         return (
             <div>
                 <header>SHELFIE</header>
+                <button>Dashboard</button>
+                <button>Add Inventory</button>
             </div>
         );
     }
